@@ -1,0 +1,21 @@
+Crime Type,Month,Outcome type
+Murder,2022-05,  Suspect charged
+Assault ,2022-05, Investigation complete; no suspect identified
+Murder,2022-05,  Investigation complete; no suspect identified
+Robbery,2022-05, Unable to prosecute suspect
+Assault,2022-05, Investigation complete; no suspect identified
+Kidnapping,2022-05,  Unable to prosecute suspect
+Murder,2022-05, Investigation complete; no suspect identified
+Assault,2022-05, Investigation complete; no suspect identified
+Vandalism,2022-05, Investigation complete; no suspect identified
+Murder,2022-05, Unable to prosecute suspect
+Kidnapping,2022-05, Unable to prosecute suspect
+Assault,2022-05, Unable to prosecute suspect
+Vandalism,2022-05, Unable to prosecute suspect
+Murder,2022-05, Investigation complete; no suspect identified
+Robbery,2022-05, Investigation complete; no suspect identified
+Vandalism,2022-05, Investigation complete; no suspect identified
+Murder,2022-05, Unable to prosecute suspect
+Murder,2022-05, Unable to prosecute suspect
+Kidnapping,2022-05,Investigation complete; no suspect identified
+

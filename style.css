@@ -1,0 +1,122 @@
+body{
+    margin: 0;
+    font-family: sans-serif;
+    background: #1e1e2f;
+    color: white;
+}
+
+.menu-item {
+    width: 250px;
+    height: 50px;
+    border: 1px solid gray;
+    list-style-type: none;
+    padding: 5px;
+}
+
+.container {
+  display: flex;
+}
+
+.hover {
+    background: lightgray
+}
+
+.selected{
+    background: gold
+}
+
+/* === Colorful minimal theme === */
+:root{
+  --bg:#0d1018;
+  --panel:#141a24;
+  --border:#263248;
+  --fg:#eef3ff;
+  --muted:#a6b7d3;
+}
+
+/* soft rainbow backdrop (subtle) */
+body{
+  background:
+    radial-gradient(1100px 700px at 8% -10%, #6aa2ff18, transparent 60%),
+    radial-gradient(900px 600px at 102% 0%, #ff6ad518, transparent 60%),
+    radial-gradient(1000px 700px at 50% 120%, #22d39218, transparent 60%),
+    var(--bg);
+  color:var(--fg);
+  margin:0;
+  font:14px/1.4 system-ui, Inter, sans-serif;
+}
+
+/* Sidebar */
+#visuals-menu{
+  list-style:none; margin:0; padding:12px;
+  border-right:1px solid var(--border);
+  background:var(--panel);
+  min-width:240px; max-height:100vh; overflow:auto;
+}
+
+/* Menu items get their own hue via --h (set from JS) */
+.menu-item{
+  --h: 210; /* default hue; JS will override */
+  --accent: hsl(var(--h) 90% 60%);
+  --accent-soft: hsl(var(--h) 90% 60% / .18);
+  display:flex; align-items:center; gap:10px;
+  padding:10px 12px; border:1px solid var(--border); border-radius:12px;
+  background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(0,0,0,.03));
+  cursor:pointer; color:var(--fg);
+  transition: transform .08s ease, border-color .2s, background .2s, box-shadow .2s;
+  position:relative;
+  will-change:transform, box-shadow;
+  opacity: 0.999;
+}
+
+#visuals-menu.ready {
+    visibility: visible;
+}
+
+/* colorful left stripe */
+.menu-item::before{
+  content:""; position:absolute; left:-1px; top:-1px; bottom:-1px; width:4px;
+  border-radius:12px 0 0 12px; background: var(--accent);
+}
+
+/* hover = soft tint using the item’s hue */
+.menu-item:hover,
+.menu-item.hover{
+  transform:translateY(-1px);
+  border-color: var(--accent);
+  background: linear-gradient(180deg, var(--accent-soft), rgba(0,0,0,.04));
+  box-shadow: 0 6px 18px var(--accent-soft);
+}
+
+/* selected = gentle glow (still colorful) */
+.menu-item.selected{ animation: glow 2.2s ease-in-out infinite; }
+@keyframes glow{
+  0%,100%{ box-shadow: inset 0 0 0 2px var(--accent-soft), 0 6px 18px var(--accent-soft); }
+  50%    { box-shadow: inset 0 0 0 3px var(--accent-soft), 0 14px 28px var(--accent-soft); }
+}
+
+
+/* tiny color dot (optional child) */
+.menu-item .mi-icon{
+  width:10px;height:10px;border-radius:999px;background:var(--accent);
+  box-shadow:0 0 0 4px var(--accent-soft);
+}
+
+/* Center area */
+#graph-wrap{ display:flex; flex-direction:column; align-items:center; gap:10px; padding:16px; }
+#graph-title{ margin:4px 0 2px; font-size:18px; font-weight:800; text-align:center; color:var(--fg); }
+
+/* Canvas card with a faint multicolor border */
+#graph-card{
+  width:1024px; max-width:100%;
+  padding:12px; border-radius:14px;
+  background: var(--panel);
+  position:relative; isolation:isolate;
+}
+#graph-card::before{
+  content:""; position:absolute; inset:0; border-radius:14px; padding:1px;
+  background: conic-gradient(from 180deg, #5aa9ff, #7bdaff, #22d392, #ffd166, #ff6ad5, #5aa9ff);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  pointer-events:none; opacity:.6;
+}
+#graph-card canvas{ display:block; margin:auto; }
